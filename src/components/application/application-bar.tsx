@@ -2,7 +2,7 @@
 import Image from "next/image"
 import { Card } from "../ui/card"
 import { Avatar, AvatarImage } from "../ui/avatar"
-import { AudioWaveform, Circle, CircleDashed, CircleMinus, CircleSlash, Command, Dot, GalleryVerticalEnd, Slash } from "lucide-react";
+import { AudioWaveform, Circle, CircleDashed, CircleMinus, CircleSlash, Command, Dot, GalleryVerticalEnd, Slash, Wifi, WifiOff } from "lucide-react";
 import { ServerSwitcher } from "./server-switcher";
 import { UserButton } from "@clerk/nextjs";
 import { useSearchParams } from "next/navigation";
@@ -74,12 +74,12 @@ export const ApplicationBar = () => {
                 <div className="ml-auto flex items-center gap-4">
                     {
                         status === "up" && (
-                            <span className="text-green-500 text-sm font-semibold flex items-center gap-3"><Dot size={20} className="animate-pulse" /> WebSocket connected</span>
+                            <span className="text-green-500 text-sm font-semibold flex items-center gap-3"><Wifi className="animate-pulse" /> WebSocket connected</span>
                         )
                     }
                     {
                         status !== "up" && (
-                            <span className="text-orange-500 text-sm font-semibold flex items-center gap-3"><CircleDashed size={20} className="animate-pulse" /> WebSocket down <Button variant="link" className="text-orange-500 text-sm" onClick={() => connectToWS()}>Reconnect</Button></span>
+                            <span className="text-orange-500 text-sm font-semibold flex items-center gap-3"><WifiOff size={20} className="animate-pulse" /> WebSocket down <Button variant="link" className="text-orange-500 text-sm" onClick={() => connectToWS()}>Reconnect</Button></span>
                         )
                     }
                     <UserButton />
