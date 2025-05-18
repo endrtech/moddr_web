@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 export async function banGuildMember(serverId: any, userId: any, body: any) {
   const sessionToken = (await cookies()).get("__session");
   const resp = await axios.post(
-    `http://localhost:3030/api/guilds/${serverId}/members/${userId}/ban`,
+    `https://api.mymod.endr.tech/api/guilds/${serverId}/members/${userId}/ban`,
     body,
     {
       headers: {

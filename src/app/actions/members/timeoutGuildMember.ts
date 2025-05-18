@@ -9,7 +9,7 @@ export async function timeoutGuildMember(
 ) {
   const sessionToken = (await cookies()).get("__session");
   const resp = await axios.post(
-    `http://localhost:3030/api/guilds/${serverId}/members/${userId}/timeout`,
+    `https://api.mymod.endr.tech/api/guilds/${serverId}/members/${userId}/timeout`,
     body,
     {
       headers: {

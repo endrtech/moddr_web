@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 export default async function getPresence(serverId: any, userId: any) {
   const sessionToken = (await cookies()).get("__session");
   const resp = await axios.get(
-    `http://localhost:3030/api/guilds/${serverId}/presence/${userId}`,
+    `https://api.mymod.endr.tech/api/guilds/${serverId}/presence/${userId}`,
     {
       headers: {
         Authorization: `Bearer ${sessionToken?.value}`,

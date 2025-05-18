@@ -6,7 +6,7 @@ export async function getUserGuilds(userId: string): Promise<any | number> {
   const sessionToken = (await cookies()).get("__session");
   try {
     const resp: AxiosResponse = await axios.get(
-      `http://localhost:3030/api/users/${userId}/guilds`,
+      `https://api.mymod.endr.tech/api/users/${userId}/guilds`,
       {
         headers: {
           Authorization: `Bearer ${sessionToken?.value}`,

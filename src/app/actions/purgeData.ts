@@ -6,7 +6,7 @@ export async function purgeData(guildId: string) {
   const sessionToken = (await cookies()).get("__session");
   try {
     const resp: AxiosResponse = await axios.get(
-      `http://localhost:3030/api/guilds/${guildId}/moddr/purge`,
+      `https://api.mymod.endr.tech/api/guilds/${guildId}/moddr/purge`,
       {
         headers: {
           Authorization: `Bearer ${sessionToken?.value}`,
