@@ -145,7 +145,8 @@ export default function RootLayout({
                         </div>
                     </TabsContent>
                 </div>
-            </Tabs >
+            </Tabs>
+            {children}
             <Loading />
             <Toaster className="dark" />
         </div >
