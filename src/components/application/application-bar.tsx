@@ -76,7 +76,7 @@ export const ApplicationBar = () => {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <Button variant="ghost" className="dark cursor-pointer">
+                                <Button variant="ghost" className="dark cursor-pointer" onClick={() => connectToWS()}>
                                     {status === "up" ? <Wifi className="animate-pulse text-green-500" /> : <WifiOff size={15} className="text-orange-500" />}
                                 </Button>
                             </TooltipTrigger>
