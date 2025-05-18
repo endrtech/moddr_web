@@ -6,7 +6,7 @@ import { io } from "socket.io-client";
 import connectSocket from "../actions/connectSocket";
 import { toast } from "sonner";
 
-export const socket = io("http://localhost:3001");
+export const socket = io("https://ws.moddr.endr.tech");
 
 export default function AppPage() {
     const router = useRouter();
