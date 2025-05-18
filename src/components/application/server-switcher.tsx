@@ -37,9 +37,15 @@ export const ServerSwitcher = () => {
             const guilds = await getUserGuilds(discordData?.id);
             setServers(guilds);
 
-            const currentServer = window.localStorage.getItem("currentServerId");
-            setValue(currentServer || "");
-            if (currentServer) {
+            const storedServer = window.localStorage.getItem("currentServerId");
+            if(!storedServer) {
+                setServerId(guilds[0].id)
+                setValue(guilds[0].id);
+                window.localStorage.setItem("currentServerId", guilds[0].id);
+                setLoading(false);
+            } else {
+                setServerId(storedServer);
+                setValue(storedServer);
                 setLoading(false);
             }
         };

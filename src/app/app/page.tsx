@@ -12,9 +12,10 @@ export default function AppPage() {
     const router = useRouter();
     const user = useAuth();
 
-    if (!user.sessionId) {
-        return router.push("/");
-    }
-
+    useEffect(() => {
+        if (!user.sessionId) {
+            return router.push("/");
+        }
+    })
     return null;
 }
