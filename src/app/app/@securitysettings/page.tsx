@@ -43,14 +43,14 @@ export default function EnableFeaturesSettings() {
                     Your MODDR data is stored in accordance with ENDR's <a href="https://endr.tech/legal/privacy" className="text-blue-400 hover:underline hover:text-blue-600">Privacy Policy</a>.
                     <br />
                     Message and guild event activity is stored in our database (MongoDB), in <b>plain text.</b> No one, including ENDR can access your guild event and message data in any way, unless you explicitly request a copy of the data stored.
-                    <br />
+                    <br /><br />
                     Most data stored in our systems is gathered from Discord API data that is marked as generally available, subject to specific conditions.
                     <br />
                     Your message content data will never be used to:
                     <br /><br />
-                    - Train, or improve the use of our AI models;
-                    - For targeted advertising purposes;
-                    - For internal use;
+                    - Train, or improve the use of our AI models;<br />
+                    - For targeted advertising purposes;<br />
+                    - For internal use;<br />
                     - Or, to be used for malicious intent, such as targeted abuse.
                     <br /><br />
                     <b>ENDR Intelligence</b> - our AI platform, is provided by OpenAI's API. Data sent to OpenAI is never stored on their servers, and is only stored <b>within your session.</b>
