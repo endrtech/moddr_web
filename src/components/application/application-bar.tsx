@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { useServerStore } from "@/lib/store/useLoadingStore";
 import { socket } from "@/app/app/page";
 import { Button } from "../ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
 export const ApplicationBar = () => {
     const serverId = useServerStore((state) => state.serverId);
@@ -72,16 +73,18 @@ export const ApplicationBar = () => {
                 <Slash size={15} className="text-zinc-600" />
                 <ServerSwitcher />
                 <div className="ml-auto flex items-center gap-4">
-                    {
-                        status === "up" && (
-                            <span className="text-green-500 text-sm font-semibold flex items-center gap-3"><Wifi className="animate-pulse" /> WebSocket connected</span>
-                        )
-                    }
-                    {
-                        status !== "up" && (
-                            <span className="text-orange-500 text-sm font-semibold flex items-center gap-3"><WifiOff size={20} className="animate-pulse" /> WebSocket down <Button variant="link" className="text-orange-500 text-sm" onClick={() => connectToWS()}>Reconnect</Button></span>
-                        )
-                    }
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button variant="ghost" className="dark cursor-pointer">
+                                    {status === "up" ? <Wifi className="animate-pulse text-green-500" /> : <WifiOff size={15} className="text-orange-500" />}
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                {status === "up" ? "Connected to WebSocket API." : "WebSocket connection is down. Try reconnecting."}
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
                     <UserButton />
                 </div>
             </div>
