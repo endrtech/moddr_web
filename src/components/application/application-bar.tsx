@@ -26,6 +26,7 @@ export const ApplicationBar = () => {
 
             const response = await connectSocket(guildId);
             socket.emit("joinGuild", guildId);
+            socket.emit("heartbeat", guildId);
 
             if (response === 200) {
                 toast.success("Connected to WebSocket API.")
@@ -73,12 +74,12 @@ export const ApplicationBar = () => {
                 <div className="ml-auto flex items-center gap-4">
                     {
                         status === "up" && (
-                            <span className="text-green-500"><Dot size={20} className="animate-pulse" /> WebSocket connected</span>
+                            <span className="text-green-500 text-sm font-semibold flex items-center gap-3"><Dot size={20} className="animate-pulse" /> WebSocket connected</span>
                         )
                     }
                     {
                         status !== "up" && (
-                            <span className="text-orange-500"><CircleDashed size={20} className="animate-pulse" /> WebSocket down <Button variant="link" onClick={() => connectToWS()}>Reconnect</Button></span>
+                            <span className="text-orange-500 text-sm font-semibold flex items-center gap-3"><CircleDashed size={20} className="animate-pulse" /> WebSocket down <Button variant="link" className="text-orange-500 text-sm" onClick={() => connectToWS()}>Reconnect</Button></span>
                         )
                     }
                     <UserButton />
