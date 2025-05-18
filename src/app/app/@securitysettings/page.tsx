@@ -37,6 +37,29 @@ export default function EnableFeaturesSettings() {
                 <span className={`${geistSans.className} text-zinc-600 font-normal text-sm`}>This feature allows you to delete all of your MODDR data, and is irreversible. You can use this feature if you need to clear any personal data, or if you want a fresh start in your dashboard.</span>
                 <Button variant="destructive" className="dark text-white w-fit" onClick={() => deleteAllData()}>Delete all data</Button>
             </div>
+            <div className="flex flex-col gap-1 p-6">
+                <h1 className={`${geistSans.className} text-white font-bold text-xl`}>How your data is stored</h1>
+                <span className={`${geistSans.className} text-zinc-400 font-normal text-sm`}>
+                    Your MODDR data is stored in accordance with ENDR's <a href="https://endr.tech/legal/privacy" className="text-blue-400 hover:underline hover:text-blue-600">Privacy Policy</a>.
+                    <br />
+                    Message and guild event activity is stored in our database (MongoDB), in <b>plain text.</b> No one, including ENDR can access your guild event and message data in any way, unless you explicitly request a copy of the data stored.
+                    <br />
+                    Most data stored in our systems is gathered from Discord API data that is marked as generally available, subject to specific conditions.
+                    <br />
+                    Your message content data will never be used to:
+                    <br /><br />
+                    - Train, or improve the use of our AI models;
+                    - For targeted advertising purposes;
+                    - For internal use;
+                    - Or, to be used for malicious intent, such as targeted abuse.
+                    <br /><br />
+                    <b>ENDR Intelligence</b> - our AI platform, is provided by OpenAI's API. Data sent to OpenAI is never stored on their servers, and is only stored <b>within your session.</b>
+                    <br />
+                    Data provided to the models utilised by ENDR are not utilised to train the models, unless explicit consent is provided by all parties (ENDR, and you as the consumer).
+                    <br />
+                    If you have further questions regarding how we store your data, please contact our support team at info@mymod.endr.tech, or in our Discord server.
+                </span>
+            </div>
         </div>
     );
 }
