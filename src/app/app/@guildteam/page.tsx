@@ -88,7 +88,7 @@ export default function GuildActivity() {
             const user = await getDiscordUser();
             const server = window.localStorage.getItem("currentServerId");
             const getPresenceData = await getPresence(server, user?.id);
-            setPresenceFn(getPresenceData.presence || "online")
+            setPresence(getPresenceData.presence || "online")
         }
         setPresenceData();
     }, [presence])
