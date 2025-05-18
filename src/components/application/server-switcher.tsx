@@ -62,8 +62,6 @@ export const ServerSwitcher = () => {
         // Add delay if needed for smooth animation:
         await new Promise((res) => setTimeout(res, 300));
 
-        router.refresh();
-
         const timeout = setTimeout(() => {
             setLoading(false);
         }, 5000);
