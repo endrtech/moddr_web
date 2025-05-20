@@ -22,7 +22,7 @@ import { timeoutGuildMember } from "@/app/actions/members/timeoutGuildMember";
 import DurationUnitSelect from "@/components/DurationUnitSelect";
 import { DiscordMessageRenderer } from "@/components/discord-message-renderer";
 import { useSearchParams } from "next/navigation";
-import { socket } from "../page";
+import socket from "@/socket";
 import { useServerStore } from "@/lib/store/useLoadingStore";
 
 export default function GuildActivity() {
@@ -57,6 +57,7 @@ export default function GuildActivity() {
                 if (!guildId) return;
 
                 socket.on("newGuildMessage", (data) => {
+                    console.log(data);
                     setMessages((prev: any) => [...prev, data]);
                 });
 

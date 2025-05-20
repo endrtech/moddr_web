@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 import DurationUnitSelect from "@/components/DurationUnitSelect";
 import { banGuildMember } from "@/app/actions/members/banGuildMember";
 import { useServerStore } from "@/lib/store/useLoadingStore";
-import { socket } from "../page";
+import socket from "@/socket";
 
 export default function GuildActivity() {
     const [members, setMembers] = useState<any>();

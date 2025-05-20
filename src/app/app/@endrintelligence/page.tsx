@@ -16,7 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { socket } from "../page";
+import socket from "@/socket";
 import { useSearchParams } from "next/navigation";
 import Cookies from "js-cookie";
 import getGuildMessages from "@/app/actions/getGuildMessages";

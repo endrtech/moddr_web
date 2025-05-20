@@ -24,7 +24,7 @@ import { Button } from "@/components/ui/button";
 import DurationUnitSelect from "@/components/DurationUnitSelect";
 import getGuildChannels from "@/app/actions/getGuildChannels";
 import { useServerStore } from "@/lib/store/useLoadingStore";
-import { socket } from "../page";
+import socket from "@/socket";
 
 export default function GuildActivity() {
     const [channels, setChannels] = useState<any[]>([]);

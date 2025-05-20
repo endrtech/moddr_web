@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 import connectSocket from "@/app/actions/connectSocket";
 import { toast } from "sonner";
 import { useServerStore } from "@/lib/store/useLoadingStore";
-import { socket } from "@/app/app/page";
+import socket from "@/socket";
 import { Button } from "../ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
 
@@ -24,14 +24,9 @@ export const ApplicationBar = () => {
         const guildId = window.localStorage.getItem("currentServerId");
         if (guildId) {
             setServerId(guildId);
-
-            const response = await connectSocket(guildId);
             socket.emit("joinGuild", guildId);
             socket.emit("heartbeat", guildId);
-
-            if (response === 200) {
-                toast.success("Connected to WebSocket API.")
-            }
+            toast.success("Connected to WebSocket API.")
         }
     }
 
@@ -71,7 +66,7 @@ export const ApplicationBar = () => {
                     />
                 </Avatar>
                 <Slash size={15} className="text-zinc-600" />
-                <ServerSwitcher />
+                {/*<ServerSwitcher />*/}
                 <div className="ml-auto flex items-center gap-4">
                     <TooltipProvider>
                         <Tooltip>

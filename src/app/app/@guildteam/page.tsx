@@ -27,7 +27,7 @@ import getPresence from "@/app/actions/presence/getPresence";
 import updatePresence from "@/app/actions/presence/updatePresence";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useServerStore } from "@/lib/store/useLoadingStore";
-import { socket } from "../page";
+import socket from "@/socket";
 
 export default function GuildActivity() {
     const [members, setMembers] = useState<any>();

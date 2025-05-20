@@ -11,7 +11,7 @@ import moment from "moment";
 import Loading from "../loading";
 import { getDiscordUser } from "@/app/actions/getDiscordUser";
 import { useServerStore } from "@/lib/store/useLoadingStore";
-import { socket } from "../page";
+import socket from "@/socket";
 
 export default function GuildActivity() {
     const [auditLog, setAuditLog] = useState<any>();

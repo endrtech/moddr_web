@@ -22,7 +22,7 @@ import { timeoutGuildMember } from "@/app/actions/members/timeoutGuildMember";
 import DurationUnitSelect from "@/components/DurationUnitSelect";
 import getGuildCases from "@/app/actions/getGuildCases";
 import { useServerStore } from "@/lib/store/useLoadingStore";
-import { socket } from "../page";
+import socket from "@/socket";
 
 export default function GuildActivity() {
     const [cases, setCases] = useState<any>();

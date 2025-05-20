@@ -2,14 +2,9 @@
 import { useAuth } from "@clerk/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
-import { io } from "socket.io-client";
+import socket from "../../socket";
 import connectSocket from "../actions/connectSocket";
 import { toast } from "sonner";
-
-export const socket = io("https://ws.moddr.endr.tech", {
-  transports: ["websocket"],
-  secure: true,
-});
 
 export default function AppPage() {
     const router = useRouter();
