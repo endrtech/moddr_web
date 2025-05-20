@@ -66,7 +66,7 @@ export const ApplicationBar = () => {
                     />
                 </Avatar>
                 <Slash size={15} className="text-zinc-600" />
-                {/*<ServerSwitcher />*/}
+                <ServerSwitcher />
                 <div className="ml-auto flex items-center gap-4">
                     <TooltipProvider>
                         <Tooltip>
