@@ -191,7 +191,7 @@ export default function GuildActivity() {
                                     </div>
                                     <div className="flex flex-col items-start gap-2 text-zinc-400">
                                         <div>
-                                            <DiscordMessageRenderer content={message.content} />
+                                            <DiscordMessageRenderer content={message.content} mentions={message.mentions} attachments={message.attachments} />
                                         </div>
                                         <div className="self-end flex flex-row items-center gap-2 text-xs">
                                             <div>{moment(new Date(message.createdAt)).format("DD/MM/YY, hh:mm a")}</div>
