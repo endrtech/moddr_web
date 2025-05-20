@@ -2,6 +2,7 @@ export type DiscordToken =
   | { type: "text"; content: string }
   | { type: "emoji"; name: string; id: string; animated: boolean }
   | { type: "mention"; id: string }
+  | { type: "role"; id: string }
   | { type: "channel"; id: string }
   | { type: "image"; url: string }
   | { type: "link"; url: string };
@@ -10,7 +11,7 @@ export function parseDiscordContent(content: string): DiscordToken[] {
   const tokens: DiscordToken[] = [];
 
   const regex =
-    /\\(<a?:\w{1,32}:\d{17,20}>)|<(?<animated>a?):(?<name>\w{1,32}):(?<id>\d{17,20})>|<@(?<mentionId>\d+)>|<#(?<channelId>\d+)>|(?<url>https?:\/\/[^\s]+)|(?<text>[^\s]+)/g;
+    /\\(<a?:\w{1,32}:\d{17,20}>)|<(?<animated>a?):(?<name>\w{1,32}):(?<id>\d{17,20})>|<@&(?<roleId>\d+)>|<@(?<mentionId>\d+)>|<#(?<channelId>\d+)>|(?<url>https?:\/\/[^\s]+)|(?<text>[^\s]+)/g;
 
   let match;
   while ((match = regex.exec(content)) !== null) {
@@ -28,6 +29,8 @@ export function parseDiscordContent(content: string): DiscordToken[] {
       });
     } else if (groups?.mentionId) {
       tokens.push({ type: "mention", id: groups.mentionId });
+    } else if (groups?.roleId) {
+      tokens.push({ type: "role", id: groups.roleId });
     } else if (groups?.channelId) {
       tokens.push({ type: "channel", id: groups.channelId });
     } else if (groups?.url) {

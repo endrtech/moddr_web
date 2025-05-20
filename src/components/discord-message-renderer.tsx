@@ -22,7 +22,7 @@ function formatMarkdown(text: string): React.ReactNode {
 
 type MentionContext = {
   users?: { id: string; username: string; globalName: string }[];
-  roles?: { id: string; name: string }[];
+  roles?: { id: string; name: string; color: string }[];
   channels?: { id: string; name: string }[];
 };
 
@@ -49,6 +49,16 @@ export function DiscordMessageRenderer({
     return item?.name || id;
   };
 
+  const resolveMentionRoleName = (id: string) => {
+    const group = mentions?.roles;
+    const item = group?.find((item) => item.id === id);
+    return { 
+      name: item?.name, 
+      color: item?.color,
+      id: item?.id
+    };
+  };
+
   return (
     <div className="flex flex-col gap-1 text-zinc-100">
       <span className="flex flex-wrap items-center gap-x-1 gap-y-1">
@@ -58,9 +68,8 @@ export function DiscordMessageRenderer({
               return (
                 <img
                   key={i}
-                  src={`https://cdn.discordapp.com/emojis/${token.id}.${
-                    token.animated ? "gif" : "webp"
-                  }`}
+                  src={`https://cdn.discordapp.com/emojis/${token.id}.${token.animated ? "gif" : "webp"
+                    }`}
                   alt={`:${token.name}:`}
                   className="inline h-5 w-5 align-middle"
                 />
@@ -73,6 +82,20 @@ export function DiscordMessageRenderer({
                   className="text-blue-400 border-blue-400"
                 >
                   @{resolveMentionUserName(token.id)}
+                </Badge>
+              );
+            case "role":
+              const roleData = resolveMentionRoleName(token.id);
+              return (
+                <Badge
+                  key={i}
+                  variant="outline"
+                  style={{
+                    color: `${roleData.color || "lightgray"}`,
+                    borderColor: `${roleData.color || "lightgray"}`
+                  }}
+                >
+                  @{roleData.name || roleData.id}
                 </Badge>
               );
             case "channel":
