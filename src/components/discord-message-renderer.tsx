@@ -21,7 +21,7 @@ function formatMarkdown(text: string): React.ReactNode {
 }
 
 type MentionContext = {
-  users?: { id: string; name: string }[];
+  users?: { id: string; username: string; globalName: string }[];
   roles?: { id: string; name: string }[];
   channels?: { id: string; name: string }[];
 };
@@ -37,8 +37,14 @@ export function DiscordMessageRenderer({
 }) {
   const tokens = parseDiscordContent(content);
 
-  const resolveMentionName = (id: string, type: "user" | "role" | "channel") => {
-    const group = mentions?.[`${type}s` as keyof MentionContext];
+  const resolveMentionUserName = (id: string) => {
+    const group = mentions?.users;
+    const item = group?.find((item) => item.id === id);
+    return item?.username || item?.globalName || id;
+  };
+
+  const resolveMentionChannelName = (id: string) => {
+    const group = mentions?.channels;
     const item = group?.find((item) => item.id === id);
     return item?.name || id;
   };
@@ -66,7 +72,7 @@ export function DiscordMessageRenderer({
                   variant="outline"
                   className="text-blue-400 border-blue-400"
                 >
-                  @{resolveMentionName(token.id, "user")}
+                  @{resolveMentionUserName(token.id)}
                 </Badge>
               );
             case "channel":
@@ -76,7 +82,7 @@ export function DiscordMessageRenderer({
                   variant="outline"
                   className="text-blue-400 border-blue-400"
                 >
-                  #{resolveMentionName(token.id, "channel")}
+                  #{resolveMentionChannelName(token.id)}
                 </Badge>
               );
             case "image":
