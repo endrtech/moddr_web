@@ -110,12 +110,19 @@ export function DiscordMessageRenderer({
               );
             case "image":
               return (
-                <img
+                <a
+                  key={i}
+                  href={token.url}
+                  target="_blank"
+                  className="cursor-pointer"
+                  >
+                  <img
                   key={i}
                   src={token.url}
                   alt=""
                   className="max-h-[150px] rounded object-contain"
                 />
+                </a>
               );
             case "link":
               return (
